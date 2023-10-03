@@ -7,6 +7,7 @@ public class FinishLine : MonoBehaviour
 {
     // Finish Line Audio Variable
     private AudioSource finishLineSE;
+    private bool isFinished = false;
 
     private void Start()
     {
@@ -15,9 +16,10 @@ public class FinishLine : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player" && !isFinished)
         {
             finishLineSE.Play();
+            isFinished = true;
             Invoke("CompleteLevel", 2f);
         }
     }
