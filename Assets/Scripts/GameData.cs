@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Schema;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public static class GameData
@@ -9,4 +10,9 @@ public static class GameData
     public static int currentLevel = 0;
     public static int deaths = 0;
     public static int totalDeaths = 0;
+
+    public static void Begin()
+    {
+        LevelData level1 = new();
+    }
 }

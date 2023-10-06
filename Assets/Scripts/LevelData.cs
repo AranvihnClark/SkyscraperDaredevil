@@ -29,4 +29,14 @@ public class LevelData
         this.total = total;
         this.deaths = deaths;
     }
+
+    public void UpdateLevelData(int level, int time, int items, int score, int total, int deaths)
+    {
+        this.level = level;
+        this.time = time;
+        this.items = items;
+        this.score = score;
+        this.total = total;
+        this.deaths = deaths;
+    }
 }
