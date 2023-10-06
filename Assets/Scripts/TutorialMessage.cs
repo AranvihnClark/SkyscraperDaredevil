@@ -21,8 +21,6 @@ public class TutorialMessage : MonoBehaviour
     // We need to stop player movement so we need to be able to target them (for now this is how I figured it out)
     [SerializeField] private GameObject player;
 
-    private GameObject tutorialObject;
-
     private void Update()
     {
         if (dialogueText.text == dialogue[index])
