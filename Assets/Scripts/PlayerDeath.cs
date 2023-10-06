@@ -22,6 +22,9 @@ public class PlayerDeath : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Traps"))
         {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+            GetComponent<PlayerMovement>().moveX = 0f;
+            GetComponent<PlayerMovement>().canMove = false;
             deathSE.Play();
             Death();
         }
@@ -30,11 +33,14 @@ public class PlayerDeath : MonoBehaviour
     private void Death()
     {
         animator.SetTrigger("death");
+        GameData.deaths++;
+        GameData.totalDeaths++;
         playerBody.bodyType = RigidbodyType2D.Static;
     }
 
-    private void restartLevel()
+    private void RestartLevel()
     {
+        GetComponent<PlayerMovement>().canMove = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
