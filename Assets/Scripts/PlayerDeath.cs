@@ -30,7 +30,7 @@ public class PlayerDeath : MonoBehaviour
         }
     }
 
-    private void Death()
+    public void Death()
     {
         animator.SetTrigger("death");
         GameData.deaths++;
