@@ -40,6 +40,7 @@ public class TutorialMessage : MonoBehaviour
         continueButton.GetComponent<Button>().onClick.RemoveAllListeners();
         continueButton.GetComponent<Button>().onClick.AddListener(NextLine);
         dialoguePanel.SetActive(true);
+        continueButton.SetActive(false);
         StartCoroutine(Typing());
     }
 
