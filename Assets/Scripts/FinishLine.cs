@@ -20,6 +20,9 @@ public class FinishLine : MonoBehaviour
         {
             finishLineSE.Play();
             isFinished = true;
+            collision.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0);
+            collision.GetComponent<PlayerMovement>().moveX = 0f;
+            collision.GetComponent<PlayerMovement>().canMove = false;
             Invoke("CompleteLevel", 2f);
         }
     }

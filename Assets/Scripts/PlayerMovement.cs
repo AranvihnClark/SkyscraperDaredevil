@@ -11,9 +11,10 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
 
     // We create a float variable that determines which direction our player is moving (for x axis).
-    private float moveX = 0f;
+    public float moveX = 0f;
 
     // Note, [SerializeField] allows use in Unity
+    [SerializeField] public bool canMove;
     [SerializeField] private float moveSpeed = 12f;
     [SerializeField] private float jumpSpeed = 17f;
     [SerializeField] private LayerMask jumpableGround;
@@ -35,31 +36,40 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
+        canMove = true;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        // This will return either 1 or -1.
-        // Note, we use Input.GetAxisRaw to grab the 'raw' data at the time of the update.
-        moveX = Input.GetAxisRaw("Horizontal");
-
-        // We then adjust our new velocity by multiplying it with a static value (walking speed).
-        // The y value of our vector will remain the same as it currently was when this updated.
-        rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-
-        // Then we also need to account for when the player jumps.
-        // Note, like above with "Horizontal", we grab the "Jump" action.
-        // These are determined in project settings under input management.
-        if (Input.GetButtonDown("Jump") && OnGround())
+        if (canMove)
         {
-            jumpSE.Play();
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            // This will return either 1 or -1.
+            // Note, we use Input.GetAxisRaw to grab the 'raw' data at the time of the update.
+            moveX = Input.GetAxisRaw("Horizontal");
+
+            // We then adjust our new velocity by multiplying it with a static value (walking speed).
+            // The y value of our vector will remain the same as it currently was when this updated.
+            rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+
+            // Then we also need to account for when the player jumps.
+            // Note, like above with "Horizontal", we grab the "Jump" action.
+            // These are determined in project settings under input management.
+            if (Input.GetButtonDown("Jump") && OnGround())
+            {
+                jumpSE.Play();
+                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            }
+            UpdateAnimationState();
         }
-        UpdateAnimationState();
     }
 
-    private void UpdateAnimationState() 
+    public void Test()
+    {
+
+    }
+
+    public void UpdateAnimationState() 
     {
 
         // This will determine our player's animation state.
