@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int strawberries = 0;
+    public static int strawberries = 0;
 
     // Using Text Mesh Pro - so datatype is known as below.
     [SerializeField] private TextMeshProUGUI strawberryCount;
