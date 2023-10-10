@@ -32,6 +32,7 @@ public class TutorialMessage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        TimerSet.timerOn = false;
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
         player.GetComponent<PlayerMovement>().moveX = 0f;
         player.GetComponent<PlayerMovement>().canMove = false;
@@ -68,7 +69,9 @@ public class TutorialMessage : MonoBehaviour
         else
         {
             resetText();
+            TimerSet.timerOn = true;
             player.GetComponent<PlayerMovement>().canMove = true;
+            player.GetComponent<PlayerMovement>().canFall = true;
         }
     }
 
