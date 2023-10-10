@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Strawberry
   - Traps
+  - FallThrough
   layers:
   - Default
   - TransparentFX
