@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class FinishLine : MonoBehaviour
 {
@@ -25,19 +26,17 @@ public class FinishLine : MonoBehaviour
     private bool isFinished = false;
     private int tempTotal;
     private float timeLeft = 60;
-    private bool timerOn = false;
 
     // Script Methods.
     private void Start()
     {
         finishLineSE = GetComponent<AudioSource>();
-        timerOn = true;
     }
 
     private void Update()
     {
         // Keeping track of the timer.
-        if (timerOn)
+        if (TimerSet.timerOn)
         {
             if (timeLeft > 0)
             {
@@ -48,7 +47,7 @@ public class FinishLine : MonoBehaviour
             else 
             {
                 player.GetComponent<PlayerDeath>().Death();
-                timerOn = false;
+                TimerSet.timerOn = false;
             }
         }
 
@@ -65,7 +64,7 @@ public class FinishLine : MonoBehaviour
         if (collision.gameObject.name == "Player" && !isFinished)
         {
             // Pause the timer.
-            timerOn = false;
+            TimerSet.timerOn = false;
 
             // Adjust our dialogue as below to match the player's current 'stats'.
             dialogue[2] = timerText.text;
@@ -75,7 +74,7 @@ public class FinishLine : MonoBehaviour
             dialogue[4] = tempTotal.ToString();
 
             // Then we create our next level object
-            GameData.UpdateLevel(GameData.levels[0], (int)Mathf.Round(timeLeft), ItemCollector.strawberries, tempTotal, GameData.deaths);
+            GameData.UpdateLevel(GameData.levels[GameData.currentLevel - 1], (int)Mathf.Round(timeLeft), ItemCollector.strawberries, tempTotal, GameData.deaths);
 
             // Finish Line effects
             finishLineSE.Play();
@@ -150,6 +149,14 @@ public class FinishLine : MonoBehaviour
     private void CompleteLevel()
     {
         player.GetComponent<PlayerMovement>().canMove = true;
+        /* For checking if data was correctly saved
+        for (int i = 0; i < GameData.levels.Count; i++)
+        {
+            Debug.Log(GameData.levels[i].ToString());
+        }
+        */
+        GameData.NewLevel();
+        ItemCollector.strawberries = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

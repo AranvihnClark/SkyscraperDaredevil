@@ -14,8 +14,6 @@ public class LevelData
     // Empty constructor used when starting a level (aside from Level 1) to create new data as needed to save on space.
     public LevelData() 
     {
-        // Increase our game data's current level by 1.
-        GameData.currentLevel++;
         level = GameData.currentLevel;
         this.time = 0;
         this.items = 0;
@@ -30,5 +28,14 @@ public class LevelData
         this.items = items;
         this.total = total;
         this.deaths = deaths;
+    }
+
+    override public string ToString()
+    {
+        return "Level: " + level +
+                "\nTime: " + time + 
+                "\nItems: " + items + 
+                "\nTotal: " + total + 
+                "\nDeaths: " + deaths;
     }
 }
