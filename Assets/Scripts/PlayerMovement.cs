@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpSE.Play();
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             }
+
             UpdateAnimationState();
         }
     }
@@ -143,5 +144,17 @@ public class PlayerMovement : MonoBehaviour
         // It also moves the cast down just a smidge lower than our current box collider.
         // This allows us to check if the cast overlaps another box collider below our player only.
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+    }
+
+    public bool Interact()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
     }
 }

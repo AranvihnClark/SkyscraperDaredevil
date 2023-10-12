@@ -25,13 +25,13 @@ public class PlayerDeath : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             GetComponent<PlayerMovement>().moveX = 0f;
             GetComponent<PlayerMovement>().canMove = false;
-            deathSE.Play();
             Death();
         }
     }
 
     public void Death()
     {
+        deathSE.Play();
         animator.SetTrigger("death");
         GameData.deaths++;
         GameData.totalDeaths++;
