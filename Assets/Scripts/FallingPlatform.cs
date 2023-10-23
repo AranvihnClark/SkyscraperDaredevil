@@ -37,6 +37,8 @@ public class FallingPlatform : MonoBehaviour
             else 
             {
                 rg.bodyType = RigidbodyType2D.Dynamic;
+                rg.gravityScale = 5f;
+                rg.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         }
         if (isTriggered && isCollided)
