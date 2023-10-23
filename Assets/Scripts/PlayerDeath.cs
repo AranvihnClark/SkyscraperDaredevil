@@ -35,7 +35,7 @@ public class PlayerDeath : MonoBehaviour
         animator.SetTrigger("death");
         GameData.deaths++;
         GameData.totalDeaths++;
-        ItemCollector.strawberries = 0;
+        ItemCollector.skyTokens = 0;
         playerBody.bodyType = RigidbodyType2D.Static;
     }
 

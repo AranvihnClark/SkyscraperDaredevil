@@ -18,9 +18,9 @@ public static class GameData
         levels.Add(new LevelData());
     }
 
-    public static void UpdateLevel(LevelData level, int time, int items, int total, int deaths)
+    public static void UpdateLevel(LevelData level, int time, int tokens, int total, int deaths)
     {
-        level.UpdateLevelData(time, items, total, deaths);
+        level.UpdateLevelData(time, tokens, total, deaths);
     }
     
     public static void NewLevel()

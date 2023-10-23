@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    public static int strawberries = 0;
+    public static int skyTokens = 0;
 
     // Using Text Mesh Pro - so datatype is known as below.
-    [SerializeField] private TextMeshProUGUI strawberryCount;
+    [SerializeField] private TextMeshProUGUI skyTokenCount;
 
     // Item Audio Variables
     [SerializeField] private AudioSource itemSE;
@@ -17,11 +17,11 @@ public class ItemCollector : MonoBehaviour
     // On collision, the below triggers.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Strawberry"))
+        if (collision.gameObject.CompareTag("SkyToken"))
         {
             itemSE.Play();
-            strawberries++;
-            strawberryCount.text = "Strawberries: " + strawberries;
+            skyTokens++;
+            skyTokenCount.text = "Sky Tokens: " + skyTokens;
 
             // Destroys the object once 'collected' by the player.
             Destroy(collision.gameObject);

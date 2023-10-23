@@ -7,7 +7,7 @@ public class LevelData
 {
     private int level;
     private int time;
-    private int items;
+    private int tokens;
     private int total;
     private int deaths;
 
@@ -16,16 +16,16 @@ public class LevelData
     {
         level = GameData.currentLevel;
         this.time = 0;
-        this.items = 0;
+        this.tokens = 0;
         this.total = 0;
         this.deaths = 0;
     }
 
-    public void UpdateLevelData(int time, int items, int total, int deaths)
+    public void UpdateLevelData(int time, int tokens, int total, int deaths)
     {
         level = GameData.currentLevel;
         this.time = time;
-        this.items = items;
+        this.tokens = tokens;
         this.total = total;
         this.deaths = deaths;
     }
@@ -34,7 +34,7 @@ public class LevelData
     {
         return "Level: " + level +
                 "\nTime: " + time + 
-                "\nItems: " + items + 
+                "\nItems: " + tokens + 
                 "\nTotal: " + total + 
                 "\nDeaths: " + deaths;
     }

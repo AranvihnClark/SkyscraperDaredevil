@@ -68,13 +68,13 @@ public class FinishLine : MonoBehaviour
 
             // Adjust our dialogue as below to match the player's current 'stats'.
             dialogue[2] = timerText.text;
-            dialogue[3] = ItemCollector.strawberries.ToString();
+            dialogue[3] = ItemCollector.skyTokens.ToString();
 
-            tempTotal = (int)Mathf.Round(timeLeft) + ItemCollector.strawberries;
+            tempTotal = (int)Mathf.Round(timeLeft) + ItemCollector.skyTokens;
             dialogue[4] = tempTotal.ToString();
 
             // Then we create our next level object
-            GameData.UpdateLevel(GameData.levels[GameData.currentLevel - 1], (int)Mathf.Round(timeLeft), ItemCollector.strawberries, tempTotal, GameData.deaths);
+            GameData.UpdateLevel(GameData.levels[GameData.currentLevel - 1], (int)Mathf.Round(timeLeft), ItemCollector.skyTokens, tempTotal, GameData.deaths);
 
             // Finish Line effects
             finishLineSE.Play();
@@ -156,7 +156,7 @@ public class FinishLine : MonoBehaviour
         }
         */
         GameData.NewLevel();
-        ItemCollector.strawberries = 0;
+        ItemCollector.skyTokens = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
