@@ -5,11 +5,13 @@ using UnityEngine;
 public class Electricity : MonoBehaviour
 {
     [SerializeField] private GameObject redSwtich;
+    private BoxCollider2D bc2D;
 
     private Animator electricityOn;
     private void Start()
     {
         electricityOn = gameObject.GetComponent<Animator>();
+        bc2D = gameObject.GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -17,12 +19,12 @@ public class Electricity : MonoBehaviour
         if (redSwtich.GetComponent<RedSwitch>().isFlipped)
         {
             electricityOn.SetBool("Off", true);
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            bc2D.enabled = false;
         }
         if (!redSwtich.GetComponent<RedSwitch>().isFlipped)
         {
             electricityOn.SetBool("Off", false);
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            bc2D.enabled = true;
         }
     }
 
