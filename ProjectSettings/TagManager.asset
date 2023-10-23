@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Strawberry
   - Traps
   - FallThrough
+  - SkyToken
+  - FallingPlatform
   layers:
   - Default
   - TransparentFX
