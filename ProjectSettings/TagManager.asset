@@ -8,6 +8,7 @@ TagManager:
   - FallThrough
   - SkyToken
   - FallingPlatform
+  - Spring
   layers:
   - Default
   - TransparentFX
