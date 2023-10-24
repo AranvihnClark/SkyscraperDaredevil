@@ -88,6 +88,14 @@ public class PlayerMovement : MonoBehaviour
             canFall = true;
             currentPlatform = collision.gameObject;
         }
+
+        if (collision.gameObject.CompareTag("Spring"))
+        {
+            canMove = false;
+            rb.velocity = new Vector2(0f, 0f);
+
+            Invoke("Bounce", 0.17f);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -156,5 +164,11 @@ public class PlayerMovement : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void Bounce()
+    {
+        canMove = true;
+        rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * 1.76f);
     }
 }
