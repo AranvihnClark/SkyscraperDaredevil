@@ -22,9 +22,9 @@ public class PlayerDeath : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Traps"))
         {
+            GetComponent<PlayerMovement>().canMove = false;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             GetComponent<PlayerMovement>().moveX = 0f;
-            GetComponent<PlayerMovement>().canMove = false;
             Death();
         }
     }

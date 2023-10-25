@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveX = 0f;
     public float moveY = 0f;
     public bool canFall = false;
+    public static bool canBounce = true;
 
     // Note, [SerializeField] allows use in Unity
     [SerializeField] public bool canMove;
@@ -77,6 +78,13 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             }
 
+            // To fix spring issue where jumping and while going forward on the spring causes instant bounce.
+            canBounce = true;
+            if (rb.velocity.y > 0)
+            {
+                canBounce = false;
+            }
+
             UpdateAnimationState();
         }
     }
@@ -89,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             currentPlatform = collision.gameObject;
         }
 
-        if (collision.gameObject.CompareTag("Spring"))
+        if (collision.gameObject.CompareTag("Spring") && canBounce)
         {
             canMove = false;
             rb.velocity = new Vector2(0f, 0f);

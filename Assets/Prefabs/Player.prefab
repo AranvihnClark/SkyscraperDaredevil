@@ -152,7 +152,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0031184554, y: -0.27905607}
+  m_Offset: {x: -0.000039100647, y: -0.27905607}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -163,7 +163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1205868, y: 1.2982438}
+  m_Size: {x: 1.1883287, y: 1.2982438}
   m_EdgeRadius: 0
 --- !u!95 &8293086800577073777
 Animator:
@@ -198,6 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e10477c7fd49fa448ada3972205b918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveX: 0
+  moveY: 0
+  canFall: 0
+  canMove: 0
   moveSpeed: 12
   jumpSpeed: 17
   jumpableGround:
@@ -216,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f3b5acaca6c1d40bf7ab9cf702824d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strawberryCount: {fileID: 0}
+  skyTokenCount: {fileID: 0}
   itemSE: {fileID: 2570191633969233731}
 --- !u!114 &8641630176074638599
 MonoBehaviour:
