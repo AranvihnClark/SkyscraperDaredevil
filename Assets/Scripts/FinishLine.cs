@@ -157,6 +157,7 @@ public class FinishLine : MonoBehaviour
         */
         GameData.NewLevel();
         ItemCollector.skyTokens = 0;
+        ItemCollector.keyCollected = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

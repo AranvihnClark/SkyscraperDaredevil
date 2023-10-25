@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Electricity : MonoBehaviour
 {
-    [SerializeField] private GameObject redSwtich;
+    [SerializeField] private GameObject redConditional;
     private BoxCollider2D bc2D;
 
     private Animator electricityOn;
@@ -16,16 +16,35 @@ public class Electricity : MonoBehaviour
 
     private void Update()
     {
-        if (redSwtich.GetComponent<RedSwitch>().isFlipped)
+        try
         {
-            electricityOn.SetBool("Off", true);
-            bc2D.enabled = false;
+            if (redConditional.GetComponent<RedSwitch>().isFlipped)
+            {
+                electricityOn.SetBool("Off", true);
+                bc2D.enabled = false;
+            }
+            if (!redConditional.GetComponent<RedSwitch>().isFlipped)
+            {
+                electricityOn.SetBool("Off", false);
+                bc2D.enabled = true;
+            }
         }
-        if (!redSwtich.GetComponent<RedSwitch>().isFlipped)
+        catch {}
+
+        try
         {
-            electricityOn.SetBool("Off", false);
-            bc2D.enabled = true;
+            if (redConditional.GetComponent<Keyhole>().isUnlocked)
+            {
+                electricityOn.SetBool("Off", true);
+                bc2D.enabled = false;
+            }
+            if (!redConditional.GetComponent<Keyhole>().isUnlocked)
+            {
+                electricityOn.SetBool("Off", false);
+                bc2D.enabled = true;
+            }
         }
+        catch {}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
