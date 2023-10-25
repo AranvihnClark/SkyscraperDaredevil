@@ -100,13 +100,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        canFall = false;
-        try
+        if (collision.gameObject.CompareTag("FallThrough"))
         {
-            currentPlatform.GetComponent<BoxCollider2D>().enabled = true;
+            canFall = false;
+            try
+            {
+                currentPlatform.GetComponent<BoxCollider2D>().enabled = true;
+            }
+            catch {}
         }
-        catch {}
-        
     }
 
     public void UpdateAnimationState() 

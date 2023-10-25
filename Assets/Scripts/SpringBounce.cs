@@ -8,7 +8,7 @@ public class SpringBounce : MonoBehaviour
 {
     private Animator animator;
     private BoxCollider2D[] bc2D;
-    private float modifier = 0.1f;
+    private float modifier = 0.11f;
 
     private bool isBouncing = false;
 
