@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        // Change's our camera's position, per frame, based on where our player's position is.
+        // I do wonder if it's necessary for the 'z' position to be there but it would make sense in a '2/3D' style game.
         transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, transform.position.z);
     }
 }

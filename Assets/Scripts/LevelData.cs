@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LevelData
 {
+    // Variable declartions.
     private int level;
     private int time;
     private int tokens;
@@ -21,15 +22,31 @@ public class LevelData
         this.deaths = 0;
     }
 
+    // Update level method.
     public void UpdateLevelData(int time, int tokens, int total, int deaths)
     {
         level = GameData.currentLevel;
-        this.time = time;
-        this.tokens = tokens;
-        this.total = total;
-        this.deaths = deaths;
+
+        // For the values below, we want to make sure we are only updating values if they're better than our previous score.
+        if (this.time < time)
+        {
+            this.time = time;
+        }
+        if (this.tokens < tokens)
+        {
+            this.tokens = tokens;
+        }
+        if (this.total < total)
+        {
+            this.total = total;
+        }
+        if (this.deaths < deaths)
+        {
+            this.deaths = deaths;
+        }
     }
 
+    // Just a method to Debug since the ToString method Unity uses is hideous to me.
     override public string ToString()
     {
         return "Level: " + level +

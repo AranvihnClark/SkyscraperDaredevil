@@ -6,6 +6,7 @@ public class ExitMenu : MonoBehaviour
 {
     public void Quit()
     {
+        // Simple method to 'quit' the game.
         Application.Quit();
     }
 }

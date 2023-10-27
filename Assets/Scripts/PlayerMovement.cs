@@ -92,28 +92,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Checking our collider's tags.
         if (collision.gameObject.CompareTag("FallThrough"))
         {
-            canFall = true;
+            // Checks if it is a platform that we can fall through.
+            // This will check which platform we're on and change that platform's box collider off in another script.
             currentPlatform = collision.gameObject;
+            canFall = true;
         }
 
         if (collision.gameObject.CompareTag("Spring") && canBounce)
         {
+            // If the colliding object is a spring, we prevent our player from moving to 'emulate' them pushing down the spring.
             canMove = false;
+
+            // We also want stabilize the player's velocity while we're here to not have them continue moving.
             rb.velocity = new Vector2(0f, 0f);
 
+            // We then invoke our 'Bounce' method after a moment.
             Invoke("Bounce", 0.17f);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        // If we're leaving trigger box that has the tag below, we want to re-enable to box collider.
         if (collision.gameObject.CompareTag("FallThrough"))
         {
             canFall = false;
             try
             {
+                // This is why we created a variable to track the 'current' platform above.
                 currentPlatform.GetComponent<BoxCollider2D>().enabled = true;
             }
             catch {}
@@ -165,20 +174,10 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
     }
 
-    public bool Interact()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            return true;
-        }
-        else 
-        {
-            return false;
-        }
-    }
-
     private void Bounce()
     {
+        // After waiting that moment from the invoke call, we can allow our player to move.
+        // We also provide an increased jump velocity.
         canMove = true;
         rb.velocity = new Vector2(rb.velocity.x, jumpSpeed * 1.76f);
     }

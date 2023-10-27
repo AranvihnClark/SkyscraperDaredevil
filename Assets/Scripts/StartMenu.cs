@@ -6,7 +6,10 @@ public class StartMenu : MonoBehaviour
 {
     public void StartGame()
     {
+        // Initializing a level's data by creating the 'level' object itself.
         GameData.Begin();
+
+        // Moves the scene to the next scene in the build index.
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

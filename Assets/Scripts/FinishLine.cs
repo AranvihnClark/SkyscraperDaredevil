@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
+using UnityEngine.PlayerLoop;
 
 public class FinishLine : MonoBehaviour
 {
@@ -21,15 +22,18 @@ public class FinishLine : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private TextMeshProUGUI timerText;
 
-    // Finish Line Audio Variable
-    private AudioSource finishLineSE;
+    // General variable declaration
     private bool isFinished = false;
     private int tempTotal;
     private float timeLeft = 60;
 
+    // Finish Line Audio Variable
+    private AudioSource finishLineSE;
+
     // Script Methods.
     private void Start()
     {
+        // Initialization of our variable
         finishLineSE = GetComponent<AudioSource>();
     }
 
@@ -38,6 +42,7 @@ public class FinishLine : MonoBehaviour
         // Keeping track of the timer.
         if (TimerSet.timerOn)
         {
+            // If there is still time left, subtract our timer and update our message text.
             if (timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime;
@@ -46,6 +51,7 @@ public class FinishLine : MonoBehaviour
             }
             else 
             {
+                // If time is at 0, player dies.
                 player.GetComponent<PlayerDeath>().Death();
                 TimerSet.timerOn = false;
             }
@@ -56,11 +62,15 @@ public class FinishLine : MonoBehaviour
         {
             continueButton.SetActive(true);
         }
+
+        // I forget why this is here but I think there was an issue with the player updating when the game starts (since it technically falls when a scene starts).
+        // May figure out a way to not have this here later.
         player.GetComponent<PlayerMovement>().UpdateAnimationState();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // This checks if the player is what triggered the box and if they haven't already somehow did so before already.
         if (collision.gameObject.name == "Player" && !isFinished)
         {
             // Pause the timer.
@@ -70,7 +80,9 @@ public class FinishLine : MonoBehaviour
             dialogue[2] = timerText.text;
             dialogue[3] = ItemCollector.skyTokens.ToString();
 
+            // A temp variable declared above is used to store math so it doesn't look so ugly below.
             tempTotal = (int)Mathf.Round(timeLeft) + ItemCollector.skyTokens;
+
             dialogue[4] = tempTotal.ToString();
 
             // Then we create our next level object
@@ -100,6 +112,7 @@ public class FinishLine : MonoBehaviour
     IEnumerator Typing()
     {
         // Types, in order of our dialogue, one character at a time.
+        // Will probably add functionality to 'skip' through text.
         foreach (char letter in dialogue[0].ToCharArray())
         {
             dialogueLevelMessage.text += letter;
@@ -135,6 +148,7 @@ public class FinishLine : MonoBehaviour
         ResetText();
     }
 
+    // Self explantory method.
     private void ResetText()
     {
         dialogueLevelMessage.text = "";
@@ -146,6 +160,7 @@ public class FinishLine : MonoBehaviour
         Invoke("CompleteLevel", 0.1f);
     }
 
+    // Resets global/player variables for the next scene.
     private void CompleteLevel()
     {
         player.GetComponent<PlayerMovement>().canMove = true;
