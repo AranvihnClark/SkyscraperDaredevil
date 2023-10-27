@@ -5,7 +5,8 @@ using UnityEngine.UIElements;
 
 public class SwingingHandle : MonoBehaviour
 {
-    // A player SerializeField is needed so that the player can interact with the chain directly.
+    // Variable declarations.
+    // A player SerializeField is needed so that the player can 'interact' with the chain directly.
     [SerializeField] private GameObject player;
     private float objectSpeed;
     private Rigidbody2D playerRB;
@@ -53,9 +54,10 @@ public class SwingingHandle : MonoBehaviour
                 // This is needed because if the player lets go, the 'y' velocity will continue to add up and cause the player to 'fall' super fast and glitch through collider boxes.
                 playerRB.velocity = new Vector2(playerRB.velocity.x, 0f);
                 
-                // If the player goes left or right (essentially), we want to updat the chain's velocity.
+                // If the player goes left or right (essentially), we want to update the chain's velocity.
                 if (playerRB.velocity.x > 0f || playerRB.velocity.x < 0f)
                 {
+                    playerRB.velocity = new Vector2(playerRB.velocity.x, 0f);
                     chainRB.velocity = new Vector2(playerRB.velocity.x * 1.5f, -10f);
                 }
                 else {}
