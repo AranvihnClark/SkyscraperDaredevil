@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
+    private FadeScreen fade;
+
+    private void Start()
+    {
+        fade = GameObject.Find("** Fade **").GetComponent<FadeScreen>();
+    }
     public void StartGame()
     {
         // Initializing a level's data by creating the 'level' object itself.
         GameData.Begin();
 
         // Moves the scene to the next scene in the build index.
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        fade.LoadNextLevel();
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void OptionsMenu()
