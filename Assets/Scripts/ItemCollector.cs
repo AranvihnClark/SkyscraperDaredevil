@@ -19,7 +19,12 @@ public class ItemCollector : MonoBehaviour
     // Public is used for other scripts to access.
     public static int skyTokens = 0;
     public static bool keyCollected = false;
-
+    
+    /*
+        // ** For future thoughts - since we want to track which tokens have already been taken.
+        
+    private static bool isCollected;
+    */
 
     // On collision, the below triggers.
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,6 +38,14 @@ public class ItemCollector : MonoBehaviour
 
             // Destroys the object once 'collected' by the player.
             Destroy(collision.gameObject);
+
+            /* 
+                // The below should replace the above at some point, I feel.
+                // When a level resets, I feel like if it is destroyed, we can't track it.
+                // I will have to think upon it further, depending on what happens next.
+
+            collision.gameObject.SetActive(false);
+            */
         }
 
         // If the item collected is a key...
