@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (canMove)
+        if (canMove && !GameData.isLoading)
         {
             // This will return either 1 or -1.
             // Note, we use Input.GetAxisRaw to grab the 'raw' data at the time of the update.
