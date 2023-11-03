@@ -14,6 +14,7 @@ public static class GameData
     public static int tokensAvailable;
     public static int totalDeaths;
     public static int deaths;
+    public static bool isLoading;
     public static List<LevelData> levels = new List<LevelData>();
 
     public static void Begin()
@@ -28,13 +29,13 @@ public static class GameData
         totalDeaths = 0;
         deaths = 0;
         levels.Add(new LevelData());
+        isLoading = true;
     }
 
     // Updates our user's level data when they beat a level, basically.
     public static void UpdateLevel(LevelData level, int time, int tokens, int total, int deaths)
     {
         level.UpdateLevelData(time, tokens, total, deaths);
-        currentLevel = currentLevel + 1;
         tokensObtained += tokens;
         tokensAvailable += tokens;
         totalDeaths += deaths;
