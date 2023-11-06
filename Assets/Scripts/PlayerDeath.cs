@@ -27,7 +27,7 @@ public class PlayerDeath : MonoBehaviour
         {
             // First we prevent movement.
             // I also adjust the player's velocity to remove the warning unity gives us for attempting to have a velocity for a static object.
-            GetComponent<PlayerMovement>().canMove = false;
+            PlayerMovement.canMove = false;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
             GetComponent<PlayerMovement>().moveX = 0f;
 
@@ -56,7 +56,7 @@ public class PlayerDeath : MonoBehaviour
     // I believe this is being handled as an Animation Event so there is technically a reference.
     private void RestartLevel()
     {
-        GetComponent<PlayerMovement>().canMove = true;
+        PlayerMovement.canMove = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

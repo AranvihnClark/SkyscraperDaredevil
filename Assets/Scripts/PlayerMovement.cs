@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public static bool canBounce = true;
 
     // Note, [SerializeField] allows use in Unity
-    [SerializeField] public bool canMove;
+    [SerializeField] public static bool canMove;
     [SerializeField] private float moveSpeed = 12f;
     [SerializeField] private float jumpSpeed = 17f;
     [SerializeField] private LayerMask jumpableGround;

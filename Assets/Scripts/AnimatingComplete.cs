@@ -10,6 +10,7 @@ public class AnimatingComplete : MonoBehaviour
     
     private void Start()
     {
+        PlayerMovement.canMove = false;
         isAnimating = true;
         timeCount = 0;
 
@@ -49,5 +50,6 @@ public class AnimatingComplete : MonoBehaviour
     {
         TimerSet.timerOn = true;
         timeCount++;
+        PlayerMovement.canMove = true;
     }
 }
