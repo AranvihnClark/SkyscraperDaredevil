@@ -26,6 +26,8 @@ public class FinishLine : MonoBehaviour
     private bool isFinished = false;
     private int tempTotal;
     private float timeLeft = 60;
+    private FadeScreen fade;
+    private string levelText;
 
     // Finish Line Audio Variable
     private AudioSource finishLineSE;
@@ -35,6 +37,9 @@ public class FinishLine : MonoBehaviour
     {
         // Initialization of our variable
         finishLineSE = GetComponent<AudioSource>();
+
+        fade = GameObject.Find("__ Fade __").GetComponent<FadeScreen>();
+        levelText = "Level " + GameData.currentLevel + " Complete";
     }
 
     private void Update()
@@ -76,6 +81,9 @@ public class FinishLine : MonoBehaviour
             // Pause the timer.
             TimerSet.timerOn = false;
 
+            // Adjust our level # that was just completed
+            dialogue[0] = levelText;
+
             // Adjust our dialogue as below to match the player's current 'stats'.
             dialogue[2] = timerText.text;
             dialogue[3] = ItemCollector.skyTokens.ToString();
@@ -95,7 +103,7 @@ public class FinishLine : MonoBehaviour
             // Restricting player movement for message display.
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0);
             player.GetComponent<PlayerMovement>().moveX = 0f;
-            player.GetComponent<PlayerMovement>().canMove = false;
+            PlayerMovement.canMove = false;
             
             // Activates message panel and disables continue button in case if it is active.
             dialoguePanel.SetActive(true);
@@ -163,7 +171,7 @@ public class FinishLine : MonoBehaviour
     // Resets global/player variables for the next scene.
     private void CompleteLevel()
     {
-        player.GetComponent<PlayerMovement>().canMove = true;
+        PlayerMovement.canMove = true;
         /* For checking if data was correctly saved
         for (int i = 0; i < GameData.levels.Count; i++)
         {
@@ -173,6 +181,7 @@ public class FinishLine : MonoBehaviour
         GameData.NewLevel();
         ItemCollector.skyTokens = 0;
         ItemCollector.keyCollected = false;
+        fade.LoadNextLevel();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
