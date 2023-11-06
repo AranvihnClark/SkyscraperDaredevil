@@ -103,7 +103,7 @@ public class FinishLine : MonoBehaviour
             // Restricting player movement for message display.
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 0);
             player.GetComponent<PlayerMovement>().moveX = 0f;
-            PlayerMovement.canMove = false;
+            player.GetComponent<PlayerMovement>().canMove = false;
             
             // Activates message panel and disables continue button in case if it is active.
             dialoguePanel.SetActive(true);
@@ -171,7 +171,6 @@ public class FinishLine : MonoBehaviour
     // Resets global/player variables for the next scene.
     private void CompleteLevel()
     {
-        PlayerMovement.canMove = true;
         /* For checking if data was correctly saved
         for (int i = 0; i < GameData.levels.Count; i++)
         {
@@ -182,6 +181,6 @@ public class FinishLine : MonoBehaviour
         ItemCollector.skyTokens = 0;
         ItemCollector.keyCollected = false;
         fade.LoadNextLevel();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

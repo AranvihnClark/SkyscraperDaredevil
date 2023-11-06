@@ -49,7 +49,7 @@ public class TutorialMessage : MonoBehaviour
             // I manually change the player's velocity and stuff to make sure they don't slide away when reading.
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
             player.GetComponent<PlayerMovement>().moveX = 0f;
-            PlayerMovement.canMove = false;
+            player.GetComponent<PlayerMovement>().canMove = false;
 
             // Not sure why it is handled like this as the continue continue button only needs one listener.
             // In theory, I feel there should be no need to remove all listeners.
@@ -105,7 +105,7 @@ public class TutorialMessage : MonoBehaviour
             // We also turn on the timer again and give our player full movement once more.
             resetText();
             TimerSet.timerOn = true;
-            PlayerMovement.canMove = true;
+            player.GetComponent<PlayerMovement>().canMove = true;
             player.GetComponent<PlayerMovement>().canFall = true;
         }
     }

@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public static bool canBounce = true;
 
     // Note, [SerializeField] allows use in Unity
-    [SerializeField] public static bool canMove;
+    [SerializeField] public bool canMove;
     [SerializeField] private float moveSpeed = 12f;
     [SerializeField] private float jumpSpeed = 17f;
     [SerializeField] private LayerMask jumpableGround;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
-        canMove = true;
+        canMove = false;
     }
 
     // Update is called once per frame

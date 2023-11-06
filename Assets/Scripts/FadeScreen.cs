@@ -8,6 +8,11 @@ public class FadeScreen : MonoBehaviour
     [SerializeField] private float transitionTime = 1f;
 
     // Public method to be called by other scripts (mainly for the 'GameMenu' and the 'FinishLine' scripts)
+    public void ReloadLevel()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+    }
+
     public void LoadNextLevel()
     {
         // Starts a coroutine of the below IEnumerator method.

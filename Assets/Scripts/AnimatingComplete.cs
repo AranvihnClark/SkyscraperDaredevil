@@ -1,16 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimatingComplete : MonoBehaviour
 {
     [SerializeField] private bool isAnimating;
     [SerializeField] GameObject levelStart;
+    [SerializeField] Rigidbody2D player;
     private int timeCount;
     
     private void Start()
     {
-        PlayerMovement.canMove = false;
+        try
+        {
+            player.GetComponent<PlayerMovement>().canMove = false;
+        }
+        catch {}
+
         isAnimating = true;
         timeCount = 0;
 
@@ -42,7 +46,6 @@ public class AnimatingComplete : MonoBehaviour
                     StartTime();
                 }
             };
-
         }
     }
 
@@ -50,6 +53,10 @@ public class AnimatingComplete : MonoBehaviour
     {
         TimerSet.timerOn = true;
         timeCount++;
-        PlayerMovement.canMove = true;
+        try
+        {
+            player.GetComponent<PlayerMovement>().canMove = true;
+        }
+        catch {}
     }
 }

@@ -9,6 +9,7 @@ public class PlayerDeath : MonoBehaviour
     // Variable declations
     private Animator animator;
     private Rigidbody2D playerBody;
+    private FadeScreen fade;
 
     // Death Audio Variable
     [SerializeField] private AudioSource deathSE;
@@ -18,6 +19,7 @@ public class PlayerDeath : MonoBehaviour
         // Initialization of our variables.
         animator = GetComponent<Animator>();
         playerBody = GetComponent<Rigidbody2D>();
+        fade = GameObject.Find("__ Fade __").GetComponent<FadeScreen>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -27,7 +29,7 @@ public class PlayerDeath : MonoBehaviour
         {
             // First we prevent movement.
             // I also adjust the player's velocity to remove the warning unity gives us for attempting to have a velocity for a static object.
-            PlayerMovement.canMove = false;
+            playerBody.GetComponent<PlayerMovement>().canMove = false;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
             GetComponent<PlayerMovement>().moveX = 0f;
 
@@ -56,7 +58,6 @@ public class PlayerDeath : MonoBehaviour
     // I believe this is being handled as an Animation Event so there is technically a reference.
     private void RestartLevel()
     {
-        PlayerMovement.canMove = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        fade.ReloadLevel();
     }
 }

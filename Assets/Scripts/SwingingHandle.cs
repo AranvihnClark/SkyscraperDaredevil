@@ -71,7 +71,7 @@ public class SwingingHandle : MonoBehaviour
                 {
                     // Two if statements are used as the below parameters can't be put above together.
                     // This checks to make sure the chain has gone a certain distance to allow the player to emulate 'jumping/flying' off the chain.
-                    if (transform.position.x > originalX + 1f || transform.position.x < originalX - 1f)
+                    if (transform.position.x > (originalX + 1f) || transform.position.x < (originalX - 1f))
                     {
                         playerRB.velocity = new Vector2(playerRB.velocity.x, Mathf.Abs(playerRB.velocity.x * 1.5f));
                     }
