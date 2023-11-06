@@ -22,16 +22,6 @@ public class GameMenu : MonoBehaviour
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void OptionsMenu()
-    {
-
-    }
-
-    public void Credits()
-    {
-        
-    }
-
     public void Exit()
     {
         // Simple method to 'quit' the game.
