@@ -10,7 +10,7 @@ public class GameMenu : MonoBehaviour
 
     private void Start()
     {
-        fade = GameObject.Find("** Fade **").GetComponent<FadeScreen>();
+        fade = GameObject.Find("__ Fade __").GetComponent<FadeScreen>();
     }
     public void StartGame()
     {
