@@ -10406,6 +10406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: __ Fade __
       objectReference: {fileID: 0}
+    - target: {fileID: 6894322867656351429, guid: 510f5cdfbeb375247925d198ac3b788b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35817,6 +35821,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969901120}
   m_CullTransparentMesh: 1
+--- !u!1 &2001311919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7538748350093777641, guid: 52d45258d1208044181051c40439cf64, type: 3}
+  m_PrefabInstance: {fileID: 151790943444471617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2013799073 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8781983947491948183, guid: 5bba131b506cf3147b083855cfefeff2, type: 3}
@@ -36055,6 +36064,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedSwitch
       objectReference: {fileID: 0}
+    - target: {fileID: 7639796094435654938, guid: 52d45258d1208044181051c40439cf64, type: 3}
+      propertyPath: redConditional
+      value: 
+      objectReference: {fileID: 2001311919}
     - target: {fileID: 7641978100578681744, guid: 52d45258d1208044181051c40439cf64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.81

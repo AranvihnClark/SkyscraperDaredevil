@@ -48346,6 +48346,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedSwitch
       objectReference: {fileID: 0}
+    - target: {fileID: 7639796094435654938, guid: 52d45258d1208044181051c40439cf64, type: 3}
+      propertyPath: redConditional
+      value: 
+      objectReference: {fileID: 2083266753}
     - target: {fileID: 7641978100578681744, guid: 52d45258d1208044181051c40439cf64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.3421216
@@ -48391,6 +48395,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52d45258d1208044181051c40439cf64, type: 3}
+--- !u!1 &2083266753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7538748350093777641, guid: 52d45258d1208044181051c40439cf64, type: 3}
+  m_PrefabInstance: {fileID: 2083266752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086810358
 GameObject:
   m_ObjectHideFlags: 0
