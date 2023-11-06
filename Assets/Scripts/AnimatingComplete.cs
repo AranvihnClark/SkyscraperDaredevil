@@ -47,7 +47,6 @@ public class AnimatingComplete : MonoBehaviour
 
     private void StartTime()
     {
-        Debug.Log("HELLO!!!???");
         TimerSet.timerOn = true;
         timeCount++;
     }
